@@ -4,7 +4,7 @@
 This project implements an SPI Slave interface that acts as a communication bridge between a master device and a Single Port RAM. Designed in Verilog, the system converts serial MOSI data into a parallel format and translates commands for the RAM using a custom 2-bit command code. The design has been verified using QuestaSim and synthesized for FPGA implementation.
 
 ## 🏗️ System Architecture
-![System Block Diagram](docsblock_diagram.png)
+![System Block Diagram](docs/block_diagram.png)
 
 The top-level module (`TOP.v`) integrates two main components:
 1. **SPI Slave Module:** Receives serial commands via `MOSI`, uses `SS_n` (Slave Select) to initiate communication, and transmits stored data back to the master via `MISO`. It manages the communication flow using a Finite State Machine (FSM).
@@ -73,15 +73,6 @@ A critical part of this project involved analyzing different FSM encoding styles
 | Sequential     | 5.445 ns               | 0.139 ns              |
 
 **Conclusion:** One-Hot Encoding provided the highest Worst Negative Slack (WNS) of 5.898 ns, allowing the system to operate at the highest possible clock frequency.
-
-## 🧪 Simulation & Verification
-![QuestaSim Waveform](docs/images/simulation.png)
-
-A comprehensive testbench (`SPI_tb.v`) was developed to verify the design in QuestaSim. Tests include:
-* Reset and idle state checks.
-* Writing specific data to specific addresses (e.g., writing `0x7a` to address `0xff` and `0xf1` to address `0xfe`).
-* Reading data back to verify memory integrity.
-* Proper assertion of `rx_valid` and `tx_valid` synchronization signals.
 
 ## 📂 Repository Structure
 * `src/` - Verilog RTL source files (`TOP.v`, `SPI_SLAVE.v`, `Ram.v`)
