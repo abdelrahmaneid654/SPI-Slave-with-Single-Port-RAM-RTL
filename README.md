@@ -27,8 +27,8 @@ The SPI slave module is responsible for receiving data from the master device an
 | rx_data | Output | 10 bit | Received data from the memory |
 | rx_valid | Output | 1 bit | Indicates when rx_data is valid |
 
-### Single Port Async RAM Module
-The single port asynchronous RAM module implements a memory block with a single data port.
+### Single Port sync RAM Module
+The single port synchronous RAM module implements a memory block with a single data port.
 
 * **Parameters:**
   * `MEM_DEPTH` (default: 256): Depth of the memory.
